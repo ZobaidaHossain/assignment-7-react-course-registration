@@ -10,6 +10,8 @@ import React from 'react';
 const Home = () => {
     const[blogs,setBlogs]=useState([]);
     const[selectCourse,setSelectedCourse]=useState([]); 
+    const [totalCost, setTotalCost] = useState(0);
+    const [remaining, setRemaining] = useState(0);
 
     useEffect(()=>{
 fetch('course.json')
@@ -19,12 +21,19 @@ fetch('course.json')
 
     const handleSelectCourse=(blog)=>{
         const isExist=selectCourse.find((item)=>item.id==blog.id);
+        let count=blog.credit;
         
         if(isExist){
            
-            toast("already added");
+           return toast("already added");
         }
         else{
+            selectCourse.forEach((item)=>{
+                count=count+item.credit;
+            });
+            const remaining = 37 - count;
+            setRemaining(remaining);
+            setTotalCost(count);
             setSelectedCourse([...selectCourse,blog]);
 
         }
@@ -37,7 +46,7 @@ fetch('course.json')
      
        
         <div className='md:flex max-w-7xl mx-auto'>
-        <div className="mt-12 ml-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
           {blogs.map((blog, index) => (
             <div key={index} className="w-80">
               <div className="border rounded overflow-hidden shadow-lg">
@@ -63,8 +72,10 @@ fetch('course.json')
             </div>
           ))}
         </div>
-        <div className="mt-12 ml-9 border rounded overflow-hidden shadow-lg w-[312px] h-[255px] mx-auto">
-            <Cart selectCourse={selectCourse}></Cart>
+        <div className="mt-12 ml-9 border rounded overflow-hidden shadow-lg w-[312px] h-[368px] mx-auto">
+            <Cart selectCourse={selectCourse}
+             remaining={remaining}
+            totalCost={totalCost}></Cart>
             <ToastContainer />
         </div>
       </div>

@@ -1,11 +1,12 @@
 
 
 import React from "react";
-const Cart = ({ selectCourse }) => {
+const Cart = ({ selectCourse,remaining,totalCost }) => {
     console.log(selectCourse);
     return (
         <div className="m-3">
-            <h3>Credit Hour Remaining 7 hr</h3>
+            <h3>Credit Hour Remaining {remaining} hr</h3>
+            < hr className="m-2" />
             
       <h5 className="text-lg font-bold">Course Name</h5>
       <ol start={1} className="">
@@ -15,7 +16,8 @@ const Cart = ({ selectCourse }) => {
         
       ))}
       </ol>
-      <h3>Total Credit Hour : 13</h3>
+      <hr className="m-2"></hr>
+      <h3>Total Credit Hour : {totalCost}</h3>
       
     </div>
     );
