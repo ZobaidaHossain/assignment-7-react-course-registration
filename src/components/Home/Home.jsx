@@ -2,8 +2,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 import { BsBook } from 'react-icons/bs';
+import Cart from "../Cart/Cart";
 const Home = () => {
     const[blogs,setBlogs]=useState([]);
+    const[selectCourse,setSelectedCourse]=useState([]); 
 
     useEffect(()=>{
 fetch('course.json')
@@ -11,10 +13,15 @@ fetch('course.json')
 .then(data=>setBlogs(data))
     },[])
 
+    const handleSelectCourse=(blog)=>{
+        setSelectedCourse([...selectCourse,blog]);
+
+    }
+
     return (
      
        
-        <div>
+        <div className='md:flex max-w-7xl mx-auto'>
         <div className="mt-12 ml-12 grid grid-cols-1 md:grid-cols-3 gap-5">
           {blogs.map((blog, index) => (
             <div key={index} className="w-80">
@@ -34,11 +41,14 @@ fetch('course.json')
                       <p className="text-base font-medium">credit: {blog.credit}hr</p>
                     </div>
                   </div>
-                  <button className="bg-blue-400 mt-auto text-center text-white py-2 px-4 rounded">Select</button>
+                  <button onClick={()=>handleSelectCourse(blog)}className="bg-blue-400 mt-auto text-center text-white py-2 px-4 rounded">Select</button>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-12 ml-9 border rounded overflow-hidden shadow-lg w-[312px] h-[255px] mx-auto">
+            <Cart selectCourse={selectCourse}></Cart>
         </div>
       </div>
       
