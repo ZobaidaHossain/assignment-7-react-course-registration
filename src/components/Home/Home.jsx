@@ -3,6 +3,10 @@ import { useState } from "react";
 
 import { BsBook } from 'react-icons/bs';
 import Cart from "../Cart/Cart";
+import React from 'react';
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 const Home = () => {
     const[blogs,setBlogs]=useState([]);
     const[selectCourse,setSelectedCourse]=useState([]); 
@@ -14,9 +18,20 @@ fetch('course.json')
     },[])
 
     const handleSelectCourse=(blog)=>{
-        setSelectedCourse([...selectCourse,blog]);
+        const isExist=selectCourse.find((item)=>item.id==blog.id);
+        
+        if(isExist){
+           
+            toast("already added");
+        }
+        else{
+            setSelectedCourse([...selectCourse,blog]);
+
+        }
+       
 
     }
+    
 
     return (
      
@@ -42,6 +57,7 @@ fetch('course.json')
                     </div>
                   </div>
                   <button onClick={()=>handleSelectCourse(blog)}className="bg-blue-400 mt-auto text-center text-white py-2 px-4 rounded">Select</button>
+                  
                 </div>
               </div>
             </div>
@@ -49,6 +65,7 @@ fetch('course.json')
         </div>
         <div className="mt-12 ml-9 border rounded overflow-hidden shadow-lg w-[312px] h-[255px] mx-auto">
             <Cart selectCourse={selectCourse}></Cart>
+            <ToastContainer />
         </div>
       </div>
       
