@@ -31,10 +31,17 @@ fetch('course.json')
             selectCourse.forEach((item)=>{
                 count=count+item.credit;
             });
+
             const remaining = 37 - count;
-            setRemaining(remaining);
-            setTotalCost(count);
-            setSelectedCourse([...selectCourse,blog]);
+            if(count>20){
+                return toast("credit hour is more than 20");
+            }
+            else{
+                setRemaining(remaining);
+                setTotalCost(count);
+                setSelectedCourse([...selectCourse,blog]);
+            }
+           
 
         }
        
