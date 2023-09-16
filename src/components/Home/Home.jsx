@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { BsBook } from 'react-icons/bs';
 import Cart from "../Cart/Cart";
-import React from 'react';
+
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 
@@ -86,7 +86,7 @@ fetch('course.json')
                   <p className="text-sm font-normal text-justify mt-2">{blog.details}</p>
                   <div className="flex justify-between items-center mt-2">
                     <div >
-                      <p className="text-base font-medium">$Price: {blog.price}</p>
+                      <p className="text-base font-medium">$ Price: {blog.price}</p>
                      
                     </div>
                     <div className="px-1 py-3 flex items-center ">

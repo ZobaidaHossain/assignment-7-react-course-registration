@@ -1,6 +1,7 @@
 
 
-import React from "react";
+import PropTypes from 'prop-types'; 
+
 const Cart = ({ selectCourse,remaining,totalCost }) => {
     console.log(selectCourse);
     return (
@@ -22,5 +23,11 @@ const Cart = ({ selectCourse,remaining,totalCost }) => {
     </div>
     );
 };
+
+Cart.propTypes={
+  selectCourse:PropTypes.func,
+  remaining:PropTypes.func,
+  totalCost:PropTypes.func
+}
 
 export default Cart;
