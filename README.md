@@ -32,7 +32,7 @@ Discuss how you managed the state in your assignment project.
 ->In the cart component, use array destructuring in cart component for working with state and props. Then, for showing credit hour and remaining hour dynamically I used a loop which is map. 
 
 7.Added condition to the credit hour and remaining hour
-###Now  I am discussing how I  managed the state in my assignment project.
+### Now  I am discussing how I  managed the state in my assignment project.
 1:I used useState hook to create state variables which are blogs,selectCourse,total Cost.remaining.here blogs is an array of all blog posts, selectCourse is an array of the courses that the user has selected and totalCost is the total cost of the selected courses and remaining is the credit hours available to the user.
 2: I used useEffect hook to fetch the data from json file and set them to the blogs state.
 3: Then I created handleSelectCourse function that takes a blog post as input and set the condition where if the couse is already in the SelectCourse state ,then it return a toast message. Otherwise the function added the course to the select Course state variable and update the totalCost and remaining state variables.
