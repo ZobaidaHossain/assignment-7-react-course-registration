@@ -32,21 +32,43 @@ fetch('course.json')
                 count=count+item.credit;
             });
 
-            const remaining = 37 - count;
-            if(count>20){
-                return toast("credit hour is more than 20");
+            const remaining = 20 - count;
+            
+            
+            
+            if(remaining<0){
+              toast("remaining hour is less than 0");
             }
             else{
-                setRemaining(remaining);
-                setTotalCost(count);
-                setSelectedCourse([...selectCourse,blog]);
+           
+              setRemaining(remaining);
+              
             }
+            
+            if(count>20){
+                toast("credit hour is more than 20");
+             
+               
+            }
+            
+             
+             else{
+              
+             
+             setTotalCost(count);
+             setSelectedCourse([...selectCourse,blog]);
+             }
+                 
+              }
+             
+            
            
 
-        }
+        
+      }
        
 
-    }
+    
     
 
     return (
