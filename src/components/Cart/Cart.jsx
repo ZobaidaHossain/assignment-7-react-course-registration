@@ -3,7 +3,7 @@
 import PropTypes from 'prop-types'; 
 
 const Cart = ({ selectCourse,remaining,totalCost }) => {
-    console.log(selectCourse);
+   
     return (
         <div className="m-3">
             <h3>Credit Hour Remaining {remaining} hr</h3>
@@ -23,6 +23,7 @@ const Cart = ({ selectCourse,remaining,totalCost }) => {
     </div>
     );
 };
+
 
 Cart.propTypes={
   selectCourse:PropTypes.func,
